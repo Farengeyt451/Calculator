@@ -7,37 +7,39 @@ html(lang="en")
 			.calc-top
 			.calc-bottom
 				.calc-display
-					p.outpoot 1234567890
+					p.outpoot 1234567890.4556
 					p.bg 00000000000000
 				.calc-brand
 					.on-off-button
-						button(name="on-off") ВКЛ/ВЫКЛ
+						span.checkbox
+							input(type="checkbox")
+							label()
 					.brand
-						label Электроника
+						p Электроника
 				.calc-buttons
 					.row
-						button(name="c") С
-						button(name="cm") СП
-						button(name="m") ИП
-						button(name="division") ÷
+						button.yellow(name="c") С
+						button.yellow(name="cm") СП
+						button.blue(name="m") ИП
+						button.blue(name="division") ÷
 					.row
 						button(name="7") 7
 						button(name="8") 8
 						button(name="9") 9
-						button(name="multiplication") ×
+						button.blue(name="multiplication") ×
 					.row
 						button(name="4") 4
 						button(name="5") 5
 						button(name="6") 6
-						button(name="subtraction") −
+						button.blue(name="subtraction") −
 					.row
 						button(name="1") 1
 						button(name="2") 2
 						button(name="3") 3
-						button(name="addition") +
+						button.blue(name="addition") +
 					.row
 						button(name="0") 0
 						button(name="dot") .
-						button(name="m+") П+
-						button(name="equality") =
+						button.blue(name="m+") П+
+						button.blue(name="equality") =
 		include templates/scripts

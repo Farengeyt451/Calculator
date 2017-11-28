@@ -7,3 +7,14 @@
 	font-weight: normal;
 	font-style: italic;
 }
+
+@font-face {
+	font-family: "Open Sans";
+	src: url("/fonts/OpenSans/OpenSans-Regular.eot");
+	src: url("/fonts/OpenSans/OpenSans-Regular.eot?#iefix") format("embedded-opentype"),
+			url("/fonts/OpenSans/OpenSans-Regular.woff") format("woff"),
+			url("/fonts/OpenSans/OpenSans-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
