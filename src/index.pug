@@ -7,7 +7,8 @@ html(lang="en")
 			.calc-top
 			.calc-bottom
 				.calc-display
-					p.outpoot 1234567890.4556
+					//- p.output 0
+					input(type="text" value="0")
 					p.bg 00000000000000
 				.calc-brand
 					.on-off-button
@@ -18,28 +19,28 @@ html(lang="en")
 						p Электроника
 				.calc-buttons
 					.row
-						button.yellow(name="c") С
+						button#ce.yellow(name="c") С
 						button.yellow(name="cm") СП
 						button.blue(name="m") ИП
-						button.blue(name="division") ÷
+						button.operation.blue(name="division" data-value="/") ÷
 					.row
-						button(name="7") 7
-						button(name="8") 8
-						button(name="9") 9
-						button.blue(name="multiplication") ×
+						button.number(name="7") 7
+						button.number(name="8") 8
+						button.number(name="9") 9
+						button.operation.blue(name="multiplication" data-value="*") ×
 					.row
-						button(name="4") 4
-						button(name="5") 5
-						button(name="6") 6
-						button.blue(name="subtraction") −
+						button.number(name="4") 4
+						button.number(name="5") 5
+						button.number(name="6") 6
+						button.operation.blue(name="subtraction" data-value="-") −
 					.row
-						button(name="1") 1
-						button(name="2") 2
-						button(name="3") 3
-						button.blue(name="addition") +
+						button.number(name="1") 1
+						button.number(name="2") 2
+						button.number(name="3") 3
+						button.operation.blue(name="addition" data-value="+") +
 					.row
-						button(name="0") 0
-						button(name="dot") .
+						button.number(name="0") 0
+						button#decimal(name="dot") .
 						button.blue(name="m+") П+
-						button.blue(name="equality") =
+						button#result.blue(name="equality" data-value="=") =
 		include templates/scripts
