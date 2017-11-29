@@ -7,9 +7,8 @@ html(lang="en")
 			.calc-top
 			.calc-bottom
 				.calc-display
-					//- p.output 0
-					input(type="text" value="0")
-					p.bg 00000000000000
+					input#output(type="text" value="0" disabled)
+					p 00000000000000
 				.calc-brand
 					.on-off-button
 						span.checkbox
@@ -22,25 +21,25 @@ html(lang="en")
 						button#ce.yellow(name="c") С
 						button.yellow(name="cm") СП
 						button.blue(name="m") ИП
-						button.operation.blue(name="division" data-value="/") ÷
+						button.operation.blue(name="division" value="/") ÷
 					.row
-						button.number(name="7") 7
-						button.number(name="8") 8
-						button.number(name="9") 9
-						button.operation.blue(name="multiplication" data-value="*") ×
+						button.number(value="7") 7
+						button.number(value="8") 8
+						button.number(value="9") 9
+						button.operation.blue(name="multiplication" value="*") ×
 					.row
-						button.number(name="4") 4
-						button.number(name="5") 5
-						button.number(name="6") 6
-						button.operation.blue(name="subtraction" data-value="-") −
+						button.number(value="4") 4
+						button.number(value="5") 5
+						button.number(value="6") 6
+						button.operation.blue(name="subtraction" value="-") −
 					.row
-						button.number(name="1") 1
-						button.number(name="2") 2
-						button.number(name="3") 3
-						button.operation.blue(name="addition" data-value="+") +
+						button.number(value="1") 1
+						button.number(value="2") 2
+						button.number(value="3") 3
+						button.operation.blue(name="addition" value="+") +
 					.row
 						button.number(name="0") 0
 						button#decimal(name="dot") .
 						button.blue(name="m+") П+
-						button#result.blue(name="equality" data-value="=") =
+						button#result.blue(name="equality" value="=") =
 		include templates/scripts

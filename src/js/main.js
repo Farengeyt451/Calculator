@@ -3,7 +3,7 @@ const operationBtns = document.querySelectorAll(".operation");
 const decimalBtn = document.querySelector("#decimal");
 const resultBtn = document.querySelector("#result");
 const clearBtn = document.querySelector("#ce");
-const outputDiv = document.querySelector("#output");
+const outputRes = document.querySelector("#output");
 let memCurNum = 0;
 let memNewNum = false;
 let memPending = "";
@@ -27,23 +27,22 @@ operationBtns.forEach((btn, index) => {
 });
 
 decimalBtn.addEventListener("click", pressNumber);
-resultBtn.addEventListener("click", pressNumber);
+// resultBtn.addEventListener("click", pressNumber);
 clearBtn.addEventListener("click", clear);
 
 function pressNumber(e) {
-	if (outputDiv.textContent === "0") {
-		outputDiv.textContent = e.target.textContent;
+	console.log(this.value);
+	if (outputRes.value === "0") {
+		outputRes.value = e.target.textContent;
 	} else {
-		outputDiv.textContent += e.target.textContent;
+		outputRes.value += e.target.textContent;
 	}
 
-	console.log(this);
 	console.log(e.target.textContent);
 }
 
 function pressOperation(e) {
-	console.log(this);
-	console.log(e.srcElement.dataset.value);
+	console.log(this.value);
 }
 
 function decimal() {
