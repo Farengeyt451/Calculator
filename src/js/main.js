@@ -18,6 +18,10 @@ function onOff() {
 	}
 }
 
+function checkLength(value) {
+	return outputRes.value.length < 14;
+}
+
 function pressNumber(e) {
 	if (!onOffBtn.checked) {
 		outputRes.style.visibility = "visible";
@@ -30,7 +34,7 @@ function pressNumber(e) {
 		if (outputRes.value === "0") {
 			outputRes.value = this.value;
 		} else {
-			outputRes.value += this.value;
+			if (checkLength(outputRes.value)) outputRes.value += this.value;
 		}
 	}
 }
@@ -42,9 +46,9 @@ function pressOperation(e) {
 	} else {
 		memNewNum = true;
 		if (memPending === "+") {
-			memCurNum += parseFloat(memLocalValue);
+			memCurNum = (memCurNum * 10 + parseFloat(memLocalValue) * 10) / 10;
 		} else if (memPending === "-") {
-			memCurNum -= parseFloat(memLocalValue);
+			memCurNum = (memCurNum * 10 - parseFloat(memLocalValue) * 10) / 10;
 		} else if (memPending === "*") {
 			memCurNum *= parseFloat(memLocalValue);
 		} else if (memPending === "/") {
@@ -52,7 +56,12 @@ function pressOperation(e) {
 		} else {
 			memCurNum = parseFloat(memLocalValue);
 		}
-		outputRes.value = memCurNum;
+		if (outputRes.value.length <= 14) {
+			outputRes.value = memCurNum;
+		} else {
+			outputRes.value = "E";
+		}
+
 		memPending = this.value;
 	}
 }

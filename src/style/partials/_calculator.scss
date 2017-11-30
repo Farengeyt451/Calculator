@@ -1,10 +1,12 @@
 .calc-wrapper {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	width: 250px;
-	margin: 0 auto;
 	padding: 6px;
 	border-radius: 10px;
 	background-color: #585E5C;
-	margin-top: 10px;
 	box-shadow: inset rgba(255, 255, 255, 0.3) 8px 8px 18px 5px, inset rgba(0, 0, 0, 0.35) -8px -8px 18px 5px;
 }
 
