@@ -12,13 +12,13 @@ html(lang="en")
 				.calc-brand
 					.on-off-button
 						span.checkbox
-							input(type="checkbox")
+							input#onOff(type="checkbox")
 							label()
 					.brand
 						p Электроника
 				.calc-buttons
 					.row
-						button#ce.yellow(name="c") С
+						button#clear.yellow(name="c") С
 						button.yellow(name="cm") СП
 						button.blue(name="m") ИП
 						button.operation.blue(name="division" value="/") ÷
@@ -38,8 +38,8 @@ html(lang="en")
 						button.number(value="3") 3
 						button.operation.blue(name="addition" value="+") +
 					.row
-						button.number(name="0") 0
+						button.number(value="0") 0
 						button#decimal(name="dot") .
 						button.blue(name="m+") П+
-						button#result.blue(name="equality" value="=") =
+						button.operation.blue(name="equality" value="=") =
 		include templates/scripts
