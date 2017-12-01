@@ -42,7 +42,16 @@ function pressNumber(e) {
 function pressOperation(e) {
 	let memLocalValue = outputRes.value;
 	if (memNewNum && memPending !== "=") {
-		outputRes.value = memCurNum;
+		// outputRes.value = memCurNum;
+		if (memCurNum.toString().length > 14) {
+			console.info("> 14");
+			outputRes.value = memCurNum.toString().slice(0, 1) + "." + memCurNum.toString().slice(1, 10) + "e+" + (memCurNum.toString().length - 1);
+			console.log(memCurNum);
+			console.log(memCurNum.toString().length);
+		} else {
+			console.info("< 14");
+			outputRes.value = memCurNum;
+		}
 	} else {
 		memNewNum = true;
 		if (memPending === "+") {
@@ -56,12 +65,15 @@ function pressOperation(e) {
 		} else {
 			memCurNum = parseFloat(memLocalValue);
 		}
-		if (outputRes.value.length <= 14) {
-			outputRes.value = memCurNum;
+		if (memCurNum.toString().length > 14) {
+			console.info("> 14");
+			outputRes.value = memCurNum.toString().slice(0, 1) + "." + memCurNum.toString().slice(1, 10) + "e+" + (memCurNum.toString().length - 1);
+			console.log(memCurNum);
+			console.log(memCurNum.toString().length);
 		} else {
-			outputRes.value = "E";
+			console.info("< 14");
+			outputRes.value = memCurNum;
 		}
-
 		memPending = this.value;
 	}
 }
