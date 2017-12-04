@@ -19,8 +19,8 @@ html(lang="en")
 				.calc-buttons
 					.row
 						button#clear.yellow(name="c") С
-						button.yellow(name="cm") СП
-						button.blue(name="m") ИП
+						button#clean-mem.yellow(name="cm") СП
+						button#use-mem.blue(name="m") ИП
 						button.operation.blue(name="division" value="/") ÷
 					.row
 						button.number(value="7") 7
@@ -40,6 +40,6 @@ html(lang="en")
 					.row
 						button.number(value="0") 0
 						button#decimal(name="dot") .
-						button.blue(name="m+") П+
+						button#value-mem.blue(name="m+") П+
 						button.operation.blue(name="equality" value="=") =
 		include templates/scripts

@@ -4,18 +4,23 @@ const decimalBtn = document.querySelector("#decimal");
 const clearBtn = document.querySelector("#clear");
 const outputRes = document.querySelector("#output");
 const onOffBtn = document.querySelector("#onOff");
+const valueMemBtn = document.querySelector("#value-mem");
+const useMemBtn = document.querySelector("#use-mem");
+const cleanMemBtn = document.querySelector("#clean-mem");
 
 let memCurNum = 0;
 let memNewNum = false;
 let memPending = "";
 let intermediateVal = 0;
+let memoryVal;
 
 function onOff() {
 	if (onOffBtn.checked) {
 		outputRes.style.visibility = "visible";
 	} else {
 		outputRes.style.visibility = "hidden";
-		clear();
+		clearDisplay();
+		clearMemValue();
 	}
 }
 
@@ -26,37 +31,25 @@ function onIfButtonPressed() {
 	}
 }
 
-// Output results to display
-function showRes(num) {
-	let stringNum = num.toString();
-	console.log(stringNum + " " + stringNum.length + " " + typeof stringNum);
-	if (stringNum.length > 14) {
-		if (num > 1) {
-			if (stringNum.indexOf(".") === -1) {
-				outputRes.value = stringNum.slice(0, 1) + "." + stringNum.slice(1, 10) + "e+" + (stringNum.length - 1);
-			} else {
-				outputRes.value = stringNum.slice(0, 1) + stringNum.slice(1, 10) + "e+" + (stringNum.length - 1);
-			}
-		} else {
-			console.log(stringNum.search(/[1-9]/));
-			let startDecimal = stringNum.search(/[1-9]/);
-			outputRes.value = stringNum.slice(startDecimal, startDecimal + 1) + "." + stringNum.slice(startDecimal + 1, 11 + startDecimal) + "e-" + (startDecimal - 1);
-		}
-	} else {
-		outputRes.value = stringNum;
-	}
+function clearDisplay() {
+	outputRes.value = "0";
+	intermediateVal = "0";
+	memNewNum = true;
+	memCurNum = 0;
+	memPending = "";
 }
 
 function pressNumber(e) {
 	onIfButtonPressed();
 	if (memNewNum) {
 		intermediateVal = this.value;
-		showRes(intermediateVal);
 		memNewNum = false;
+		showRes(intermediateVal);
 	} else {
 		if (outputRes.value === "0") {
 			intermediateVal = this.value;
 			showRes(intermediateVal);
+			if (intermediateVal.length > 14) return;
 		} else {
 			intermediateVal += this.value;
 			showRes(intermediateVal);
@@ -87,7 +80,7 @@ function pressOperation(e) {
 	}
 }
 
-function decimal() {
+function pressDecimal() {
 	let memDecimal = intermediateVal;
 	onIfButtonPressed();
 	console.log(memDecimal + " memDec");
@@ -103,23 +96,50 @@ function decimal() {
 	showRes(memDecimal);
 }
 
-function clear() {
-	outputRes.value = "0";
-	intermediateVal = "0";
-	memNewNum = true;
-	memCurNum = 0;
-	memPending = "";
+function showRes(num) {
+	let stringNum = num.toString();
+	console.log(stringNum + " " + stringNum.length + " " + typeof stringNum);
+	if (stringNum.length > 14) {
+		outputRes.value = stringNum.slice(0, 14);
+	} else {
+		outputRes.value = stringNum;
+	}
+}
+
+function copyMemValue() {
+	memoryVal = intermediateVal;
+	console.log(`В памяти ${memoryVal}`);
+}
+
+function pasteMemValue() {
+	if (memoryVal) {
+		intermediateVal = memoryVal;
+		memNewNum = false;
+		showRes(intermediateVal);
+	}
+	return;
+}
+
+function clearMemValue() {
+	memoryVal = 0;
 }
 
 onOffBtn.addEventListener("change", onOff);
 
-numberBtns.forEach((btn, index) => {
+clearBtn.addEventListener("click", clearDisplay);
+
+numberBtns.forEach(btn => {
 	btn.addEventListener("click", pressNumber);
 });
 
-operationBtns.forEach((btn, index) => {
+operationBtns.forEach(btn => {
 	btn.addEventListener("click", pressOperation);
 });
 
-decimalBtn.addEventListener("click", decimal);
-clearBtn.addEventListener("click", clear);
+decimalBtn.addEventListener("click", pressDecimal);
+
+valueMemBtn.addEventListener("click", copyMemValue);
+
+useMemBtn.addEventListener("click", pasteMemValue);
+
+cleanMemBtn.addEventListener("click", clearMemValue);
