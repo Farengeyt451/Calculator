@@ -16,6 +16,7 @@ const rigger = require("gulp-rigger");
 const sass = require("gulp-sass");
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
+const babel = require("gulp-babel");
 
 // Создаем переменную окружения NODE_ENV
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == "development";
@@ -108,6 +109,7 @@ gulp.task("js:build", function () {
 		.pipe(plumber())
 		.pipe(rigger())
 		.pipe(gulpIf(isDevelopment, sourcemaps.init()))
+		.pipe(gulpIf(!isDevelopment, babel({presets: ["env"]})))
 		.pipe(gulpIf(!isDevelopment, uglify()))
 		.pipe(gulpIf(isDevelopment, sourcemaps.write()))
 		.pipe(gulpIf(isDevelopment, gulp.dest(path.build.js), gulp.dest(path.production.js)))

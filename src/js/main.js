@@ -83,7 +83,6 @@ function pressOperation(e) {
 function pressDecimal() {
 	let memDecimal = intermediateVal;
 	onIfButtonPressed();
-	console.log(memDecimal + " memDec");
 	if (memNewNum) {
 		memDecimal = "0.";
 		memNewNum = false;
@@ -98,7 +97,6 @@ function pressDecimal() {
 
 function showRes(num) {
 	let stringNum = num.toString();
-	console.log(stringNum + " " + stringNum.length + " " + typeof stringNum);
 	if (stringNum.length > 14) {
 		outputRes.value = stringNum.slice(0, 14);
 	} else {
@@ -108,7 +106,6 @@ function showRes(num) {
 
 function copyMemValue() {
 	memoryVal = intermediateVal;
-	console.log(`В памяти ${memoryVal}`);
 }
 
 function pasteMemValue() {
