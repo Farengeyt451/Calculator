@@ -1,4 +1,15 @@
 @font-face {
+	font-family: "Icomoon";
+	src:  url("../fonts/Icomoon/Icomoon.eot?a2r617");
+	src:  url("../fonts/Icomoon/Icomoon.eot?a2r617#iefix") format("embedded-opentype"),
+		url("../fonts/Icomoon/Icomoon.ttf?a2r617") format("truetype"),
+		url("../fonts/Icomoon/Icomoon.woff?a2r617") format("woff"),
+		url("../fonts/Icomoon/Icomoon.svg?a2r617#icomoon") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
 	font-family: "Calculator";
 	src: url("../fonts/Calculator/Calculator.eot");
 	src: url("../fonts/Calculator/Calculator.eot?#iefix") format("embedded-opentype"),
